@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'your-dockerhub-username/student-management-system'
+        DOCKER_IMAGE = 'vikas636/student-management-system'
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
         KUBE_CONFIG = 'kubernetes-kubeconfig'
         APP_ENDPOINT = 'http://student.local/actuator/health'
