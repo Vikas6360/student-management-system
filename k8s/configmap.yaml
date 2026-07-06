@@ -4,7 +4,7 @@ metadata:
   name: student-config
   namespace: student-management
 data:
-  DB_HOST: "mysql-server-host" # Replace with actual AWS EC2 IP or hostname
+  DB_HOST: "mysql" # Replace with actual AWS EC2 IP or hostname
   DB_PORT: "3306"
   DB_NAME: "studentdb"
   SPRING_PROFILES_ACTIVE: "prod"
