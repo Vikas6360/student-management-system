@@ -56,12 +56,25 @@ pipeline {
         }
 
         stage('8. Deploy to Kubernetes') {
-            steps {
-                withKubeConfig(credentialsId: "${KUBE_CONFIG}") {
-                    sh 'kubectl apply -f k8s/'
-                }
-            }
+    steps {
+        withKubeConfig(credentialsId: "${KUBE_CONFIG}") {
+            sh '''
+                kubectl apply -f k8s/namespace.yaml
+                sleep 5
+
+                kubectl apply -f k8s/configmap.yaml
+                kubectl apply -f k8s/secret.yaml
+                kubectl apply -f k8s/persistent-volume.yaml
+                kubectl apply -f k8s/persistent-volume-claim.yaml
+                kubectl apply -f k8s/service-account.yaml
+                kubectl apply -f k8s/service.yaml
+                kubectl apply -f k8s/deployment.yaml
+                kubectl apply -f k8s/hpa.yaml
+                kubectl apply -f k8s/ingress.yaml
+            '''
         }
+    }
+}
 
         stage('9. Verify Deployment') {
             steps {
