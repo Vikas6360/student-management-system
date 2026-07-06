@@ -1,0 +1,13 @@
+@media (max-width: 767.98px) {
+    .stat-card .card-body {
+        flex-direction: column;
+        text-align: center;
+    }
+    .stat-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    .table-responsive {
+        border: 0;
+    }
+}
