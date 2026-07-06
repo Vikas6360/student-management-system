@@ -1,0 +1,15 @@
+Dockerfile
+.dockerignore
+target/
+.git/
+.idea/
+.vscode/
+*.class
+*.jar
+*.war
+*.log
+docker-compose.yml
+k8s/
+README.md
+Jenkinsfile
+postman_collection.json

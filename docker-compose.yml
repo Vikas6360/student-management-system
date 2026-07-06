@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: student_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: studentdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - student_network
+
+  app:
+    build: .
+    container_name: student_app
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=mysqldb
+      - DB_PORT=3306
+      - DB_NAME=studentdb
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    depends_on:
+      - mysqldb
+    networks:
+      - student_network
+
+volumes:
+  mysql_data:
+
+networks:
+  student_network:
+    driver: bridge
