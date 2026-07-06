@@ -72,9 +72,11 @@ pipeline {
 
                         # MySQL
                         kubectl apply -f k8s/mysql-secret.yaml
+                        kubectl apply -f k8s/mysql-pv.yaml
                         kubectl apply -f k8s/mysql-pvc.yaml
                         kubectl apply -f k8s/mysql-service.yaml
                         kubectl apply -f k8s/mysql-deployment.yaml
+
 
                         echo "Waiting for MySQL..."
                         sleep 30
